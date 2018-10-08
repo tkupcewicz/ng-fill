@@ -1,0 +1,31 @@
+{
+  "manifest_version": 2,
+ 
+  "name": "NGFill",
+  "version": "1.0",
+  "description": "Fill up input with an email address",
+  "permissions": [
+    "activeTab",
+    "storage"
+  ],
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": false
+  },
+  "content_scripts": [{
+    "matches": ["http://*/*"],
+    "js": ["content.js"]
+  }],
+  "background": {
+    "scripts": ["background.js"]
+  },
+  "commands": {
+    "fill_up_email": {
+      "suggested_key": {
+        "default": "Ctrl+E",
+        "mac": "Ctrl+E"
+      },
+      "description": "Fill up email"
+    }
+  }
+}
