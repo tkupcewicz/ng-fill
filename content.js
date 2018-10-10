@@ -1,29 +1,16 @@
-function setCaretPosition(elem, caretPos) {
-
-  if(elem.createTextRange) {
-      var range = elem.createTextRange();
-      range.move('character', caretPos);
-      range.select();
-  }
-  else {
-    if(elem.selectionStart) {
-      elem.focus();
-      elem.setSelectionRange(caretPos, caretPos);
-    }
-    else
-      elem.focus();
-  }
-}
-
 function fillUpMail() {
   var email = '';
   chrome.storage.sync.get({
     ngAddress: 'default',
   }, function(items) {
     email = items.ngAddress;
-    email = [email.slice(0, email.indexOf("@")), "+", email.slice(email.indexOf("@"))].join('');
-    document.activeElement.value = email;
-    setCaretPosition(document.activeElement, email.indexOf("@"));
+    address = [email.slice(0, email.indexOf("@")), "+"].join('');
+    domain =  email.slice(email.indexOf("@"));
+    if(document.activeElement.value == "") 
+      document.activeElement.value = address;
+    else if(document.activeElement.value != address && !document.activeElement.value.includes(domain)) {
+      document.activeElement.value += domain;
+    }
   });
 }
  
