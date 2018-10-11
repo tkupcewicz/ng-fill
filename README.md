@@ -1,4 +1,7 @@
 # ng-fill
+
+**Due to limitations of HTML input type='email' you have to press keybind twice, once for address and second time for domain**
+
 Extension to fill up email addresses together with `+` sign and moving cursor right after it
 
 - In order to install it, download as a zip, unpack and drag to `chrome://extensions` page
